@@ -6,14 +6,14 @@ public class ParkingLot {
     private static final double DAILY_MAX = 15;
     private static final double HOURLY_RATE = 2;
 
-    public double calculateFee(int index){
-        if(index >= tickets.size())
-        {
-            return 0;
+    public double calculateFee(int index) throws Exception {
+        if (index > tickets.size()){
+            throw new Exception("Index out of bounds");
         }
 
         // Get the corresponding Ticket
-        ITicket ticket = tickets.get(index);
+        Ticket ticket = tickets.get(index);
+  
         double fee = 0;
         // The number of days the car has been in the lot
         long days = ticket.getDays();
@@ -43,6 +43,7 @@ public class ParkingLot {
             hours += 1;
         }
         // Give the riders the 7th day of parking free
+
         if(days >= 7)
         {
             long excludedDays = days/7;
@@ -58,5 +59,4 @@ public class ParkingLot {
         fee = hours * HOURLY_RATE + days * DAILY_MAX;
         return fee;
     }
-
 }
