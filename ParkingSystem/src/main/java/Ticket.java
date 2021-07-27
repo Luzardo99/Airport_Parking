@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
-public class Ticket {
+public class Ticket implements ITicket {
     LocalDateTime entryTime;
     LocalDateTime exitTime;
 
