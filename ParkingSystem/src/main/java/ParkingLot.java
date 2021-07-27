@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class ParkingLot {
 
-    ArrayList<Ticket> tickets;
+    public ArrayList<ITicket> tickets = new ArrayList<ITicket>();
     private static final double DAILY_MAX = 15;
     private static final double HOURLY_RATE = 2;
 
@@ -13,6 +13,7 @@ public class ParkingLot {
 
         // Get the corresponding Ticket
         Ticket ticket = tickets.get(index);
+  
         double fee = 0;
         // The number of days the car has been in the lot
         long days = ticket.getDays();
@@ -41,6 +42,8 @@ public class ParkingLot {
         {
             hours += 1;
         }
+        // Give the riders the 7th day of parking free
+
         if(days >= 7)
         {
             long excludedDays = days/7;
