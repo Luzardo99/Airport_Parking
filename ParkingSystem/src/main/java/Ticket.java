@@ -1,8 +1,7 @@
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 
-public class Ticket {
+public class Ticket implements ITicket{
     LocalDateTime entryTime;
     LocalDateTime exitTime;
 
@@ -27,14 +26,17 @@ public class Ticket {
         this.exitTime = exitTime;
     }
 
+    @Override
     public long getDays() {
         return ChronoUnit.DAYS.between(entryTime, exitTime);
     }
 
+    @Override
     public long getHours() {
         return ChronoUnit.HOURS.between(entryTime, exitTime) - getDays() * 24;
     }
 
+    @Override
     public long getMinutes() {
         return ChronoUnit.MINUTES.between(entryTime, exitTime) - (getDays() * 24 + getHours()) * 60;
     }
@@ -46,6 +48,7 @@ public class Ticket {
                 "\nexitTime  : " + exitTime +
                 "\nDays: " + getDays() +
                 ", Hours: " + getHours() +
-                ", Minutes: " + getMinutes();
+                ", Minutes: " + getMinutes() +
+                "\n----------------";
     }
 }
